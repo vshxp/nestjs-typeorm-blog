@@ -1,10 +1,13 @@
+import { CommentEntity } from 'src/comments/models/comment.entity/comment.entity';
 import { UserEntity } from 'src/user/models/user.entity/user.entity';
 import {
     Column,
     Entity,
     PrimaryGeneratedColumn,
     JoinTable,
-    ManyToMany
+    ManyToOne,
+    ManyToMany,
+    OneToMany
 } from 'typeorm';
 
 @Entity()
@@ -17,11 +20,15 @@ export class ArticleEntity {
     tittle: string
 
     @Column()
+    bannerImage: string
+
+    @Column()
     article: string
 
-    @JoinTable()
-    
-    @ManyToMany((type) => UserEntity, (user) => user.articles, { cascade: true })
-    author: UserEntity[]
+    @ManyToOne((type) => UserEntity, (user) => user.articles, { cascade: true })
+    author: UserEntity
+
+    @OneToMany((type) => CommentEntity, (comments) => comments.text )
+    comments: CommentEntity[]
 
 }

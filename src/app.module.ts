@@ -16,6 +16,10 @@ import { LoginModule } from './login/login.module';
 import { UserModule } from './user/user.module';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { UserEntity } from './user/models/user.entity/user.entity';
+import { ArticleEntity } from './articles/model/article.entity/article.entity';
+import { CategoryEntity } from './categories/models/category.entity/category.entity';
+import { CommentEntity } from './comments/models/comment.entity/comment.entity';
 
 @Module({
   imports: [
@@ -29,6 +33,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       database: process.env.DATABASE_NAME,
       autoLoadEntities: true,
       synchronize: true,
+      entities: [UserEntity, ArticleEntity, CategoryEntity, CommentEntity]
     }),
     ArticlesModule,
     CategoriesModule,

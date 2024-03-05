@@ -1,3 +1,5 @@
+import { CategoriesService } from 'src/categories/categories.service';
+import { CategoryEntity } from 'src/categories/models/category.entity/category.entity';
 import { CommentEntity } from 'src/comments/models/comment.entity/comment.entity';
 import { UserEntity } from 'src/user/models/user.entity/user.entity';
 import {
@@ -31,4 +33,6 @@ export class ArticleEntity {
     @OneToMany((type) => CommentEntity, (comments) => comments.text )
     comments: CommentEntity[]
 
+    @ManyToOne(() => CategoryEntity, (categorie) => categorie.name)
+    categories: CategoriesService[]
 }

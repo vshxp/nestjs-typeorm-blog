@@ -22,7 +22,7 @@ export class UserEntity {
   email: string;
 
   @Column()
-  passwrod: string;
+  password: string;
 
   @OneToMany((type) => ArticleEntity, (article) => article.author)
   articles: ArticleEntity[]

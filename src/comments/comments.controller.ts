@@ -1,4 +1,4 @@
-import { Controller, Post, Body } from '@nestjs/common';
+import { Controller, Post, Body, Get } from '@nestjs/common';
 import { CommentsService } from './comments.service';
 import { CreateCommentDto } from '../comments/dto/create-comment.dto.ts/create-comment.dto';
 
@@ -10,6 +10,11 @@ export class CommentsController {
     @Post()
     create(@Body() createCommentDto: CreateCommentDto){
         return this.commentsService.create(createCommentDto);
+    }
+
+    @Get()
+    findAll(){
+        return this.commentsService.findAll();
     }
 
 }

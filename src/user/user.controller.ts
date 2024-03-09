@@ -26,7 +26,7 @@ export class UserController {
     }
 
     @Get(':id')
-    findOne(@Param('id', ParseIntPipe) id: number){
+    findOne(@Param('id') id){
         return this.userService.findOne(id);
     }
 
